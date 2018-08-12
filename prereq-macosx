@@ -1,0 +1,45 @@
+#!/bin/bash
+export DOTFILES="$HOME/dotfiles"
+
+echo ""
+echo "Handling Pre-reqs for macOS"
+echo ""
+
+echo " › Setting up Xcode Command Line Tools"
+
+xcode-select --install
+
+echo " › Installing and Upgrading Homebrew"
+if [ -f "$(which brew)" ]; then
+  brew update
+else
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+echo " › Installing Common Utilities"
+brew install git
+brew install rename
+brew install tree
+brew install fswatch
+brew install coreutils
+brew install exa # better ls
+
+echo " › Installing Editor and Friends"
+brew install vim
+brew install neovim
+brew install fzf
+brew install ack the_platinum_searcher
+
+echo " › Installing Preferred Languages"
+brew install elixir
+brew install rust
+brew install go
+
+echo " › Install Databases"
+brew install postgresql
+brew install elasticsearch
+brew install kafka
+brew install memcached
+
+echo ""
+echo "DONE"

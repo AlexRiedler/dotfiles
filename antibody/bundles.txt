@@ -1,0 +1,9 @@
+djui/alias-tips
+mafredri/zsh-async
+robbyrussell/oh-my-zsh folder:plugins/docker
+robbyrussell/oh-my-zsh folder:plugins/docker-compose
+robbyrussell/oh-my-zsh folder:plugins/pass
+denysdovhan/spaceship-prompt
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search

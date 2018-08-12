@@ -1,0 +1,10 @@
+Host *
+    UseRoaming no
+    ServerAliveInterval 300
+    ServerAliveCountMax 3
+    Compression yes
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 60
+
+Include ~/.ssh/config.local

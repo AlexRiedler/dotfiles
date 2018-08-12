@@ -1,0 +1,266 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf " fast finder tool written in go junegunn/fzf
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'kana/vim-fakeclip'
+
+" File Plugins
+" Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'tpope/vim-rails'
+" Plugin 'ehamberg/vim-cute-python'
+" Plugin 'kchmck/vim-coffee-script' " cofee-script file support
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'elixir-lang/vim-elixir'
+" Plugin 'klen/python-mode'
+" Plugin 'tpope/vim-haml'
+Plugin 'leshill/vim-json'
+"Plugin 'groenewege/vim-less'
+"Plugin 'tpope/vim-surround'
+"Plugin 'leafgarland/typescript-vim'
+"Plugin 'vim-scripts/coffee.vim'
+Plugin 'AlexRiedler/ruby-matchit'
+Plugin 'bogado/file-line'
+Plugin 'ngmy/vim-rubocop'
+" Plugin 'fatih/vim-nginx'
+" Plugin 'IN3D/vim-raml'
+Plugin 'pearofducks/ansible-vim'
+Plugin 'vim-airline/vim-airline' " Status line
+
+" Color Schemes
+Plugin 'tomasr/molokai'
+Plugin 'fmoralesc/molokayo'
+Plugin 'morhetz/gruvbox'
+
+" Interface
+Plugin 'gilgigilgil/anderson.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'myusuf3/numbers.vim' " relative numbers
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'shougo/neocomplcache' " auto-complete plugin
+"Plugin 'majutsushi/tagbar' " exuberant tags, etc
+Plugin 'scrooloose/syntastic' " syntax checker
+"Plugin 'kien/ctrlp.vim' using FZF instead
+"Plugin 'wincent/command-t'
+"Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'benmills/vimux'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
+
+" Language Specific
+Plugin 'skalnik/vim-vroom'
+
+" Time Tracking
+"Plugin 'wakatime/vim-wakatime'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+" RSpec.vroom vim mappings
+let mapleader=","
+" let g:vroom_use_spring=1
+let g:vroom_use_binstubs=1
+let g:vroom_use_vimux=1
+
+" ctrlp setup
+let g:ctrlp_clear_cache_on_exit = 0 "disable clearing cache on exit
+
+" Command-T setup
+"let g:CommandTMaxCachedDirectories=10 " increase cache to 10 directories as roots
+"let g:CommandTFileScanner='git' " use git's ls-files to produce list of files
+"let g:CommandTTraverseSCM='dir' " find the closest SCM root above the CWD
+
+"nnoremap <silent> <Leader>t :CommandT<CR>
+
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+syntax on           " enable syntax highlighting
+set number ruler    " show line numbers
+set backspace=indent,eol,start
+set incsearch           " incremental searching (auto shifting when looking in file)
+
+" Indent Settings
+set autoindent      " auto indentation rules
+set smartindent     " smart indentation rules
+set tabstop=2       " tab size = X
+set shiftwidth=2    " soft space = X
+set expandtab       " expand tab to spaces
+set showmatch       " highlight matching braces
+
+" Enable Folding
+"set foldenable
+"set fdm=indent
+
+" Formatting
+set formatoptions=tcqr  " Describe automatic formatting ordering
+set cindent             " C code indentation
+set cinoptions=:0,p0,t0 " Amount for indent; parameter declaraction style (a, b); don't indent type declarations
+set cinwords=if,else,while,do,for,switch,case   " Things that begin an indentation level in C
+
+" Misc.
+set ls=2            " Always show status line
+set ttyfast         " Enable Fast Terminal
+set noerrorbells    " no error bells (beeps)
+set undolevels=1000 " X undo's saved
+set lazyredraw      " don't redraw when don't have to
+set autoread        " watch for file changes
+set scrolloff=10    " keep X lines above/below when scrolling
+set number          " show line numbers
+set nocp            " Enable no-compatible (for fancy vim features)
+set statusline=%F%m%r%h%w\ [TYPE=%Y\ %{&ff}]\ [%l/%L\ (%p%%)] " Informative status line
+
+" Filetype related automatics
+filetype on         " Enable file-type detection
+filetype indent on  " Enable file-type specific indenting
+filetype plugin on  " Enable file-type specific plugins
+
+
+" use .astylerc for indentation rules
+autocmd BufNewFile,BufRead *.cpp set formatprg=astyle
+autocmd BufNewFile,BufRead *.hpp set formatprg=astyle
+
+set background=dark                " Setting dark mode for gruvbox
+let g:gruvbox_contrast_dark = "hard"
+let g:gruvbox_contrast_light = "hard"
+" Color and Theme
+" set t_Co=256    " force 256 term colors
+syntax on       " syntax hilight on
+"colorscheme molokayo
+"colorscheme anderson
+colorscheme gruvbox
+"let g:rehash256 = 1
+set termguicolors " Color support for neovim etc
+
+"
+" Keyboard navigation settings
+"
+
+" tab navigation like firefox
+nnoremap <silent> <C-Right> :tabnext<CR>
+nnoremap <silent> <C-Left> :tabprevious<CR>
+nnoremap <silent> <C-t> :tabnew<CR>
+
+" Space will toggle folds!
+nnoremap <space> za
+
+" FZF! fast search
+nnoremap <silent> <C-p> :FZF<CR>
+
+"
+" Auto scripts
+"
+
+" Remove any trailing whitespace that is in the file (on read/write)
+" autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif
+
+" Numbers.
+nnoremap <F3> :NumbersToggle<CR>
+
+" tab is actually a tab in Makefiles
+autocmd FileType make setlocal noexpandtab
+
+" setup indent guides plugin
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 2
+let g:indent_guides_enable_on_vim_startup = 1
+
+" setup tabstops for a variety of languages
+autocmd FileType ruby set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType coffee set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType scss set tabstop=2|set shiftwidth=2|set expandtab
+
+" handle files with multiple extensions to set all filestypes
+function MultiExtensionFiletype()
+  let ft_default=&filetype
+  let ft_prefix=substitute(matchstr(expand('%'),'\..\+\.'),'\.','','g')
+  sil exe "set filetype=" . ft_prefix  . "." . ft_default
+endfunction
+
+set tags+=gems.tags
+
+set textwidth=120
+set colorcolumn=+1
+
+
+" for tmux to automatically set paste and nopaste mode at the time pasting (as happens in VIM UI)
+
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+set clipboard=unnamed
+set mouse=
+
+" pearofducks/ansible-vim setup
+let g:ansible_attribute_highlight = "ab"
+let g:ansible_name_highlight = 'd'
+
+" unite + pt
+nnoremap <silent> ,g :<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+if executable('pt')
+  let g:unite_source_grep_command = 'pt'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+  let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_grep_encoding = 'utf-8'
+endif
+
+
+autocmd BufReadPre,FileReadPre	*.gz,*.bz2,*.Z,*.lzma,*.xz setlocal bin
+autocmd BufReadPost,FileReadPost	*.gz  call gzip#read("gzip -dn")
+autocmd BufReadPost,FileReadPost	*.bz2 call gzip#read("bzip2 -d")
+autocmd BufReadPost,FileReadPost	*.Z   call gzip#read("uncompress")
+autocmd BufReadPost,FileReadPost	*.lzma call gzip#read("lzma -d")
+autocmd BufReadPost,FileReadPost	*.xz  call gzip#read("xz -d")
+autocmd BufWritePost,FileWritePost	*.gz  call gzip#write("gzip")
+autocmd BufWritePost,FileWritePost	*.bz2 call gzip#write("bzip2")
+autocmd BufWritePost,FileWritePost	*.Z   call gzip#write("compress -f")
+autocmd BufWritePost,FileWritePost	*.lzma call gzip#write("lzma -z")
+autocmd BufWritePost,FileWritePost	*.xz  call gzip#write("xz -z")
+autocmd FileAppendPre			*.gz  call gzip#appre("gzip -dn")
+autocmd FileAppendPre			*.bz2 call gzip#appre("bzip2 -d")
+autocmd FileAppendPre			*.Z   call gzip#appre("uncompress")
+autocmd FileAppendPre			*.lzma call gzip#appre("lzma -d")
+autocmd FileAppendPre			*.xz   call gzip#appre("xz -d")
+autocmd FileAppendPost		*.gz  call gzip#write("gzip")
+autocmd FileAppendPost		*.bz2 call gzip#write("bzip2")
+autocmd FileAppendPost		*.Z   call gzip#write("compress -f")
+autocmd FileAppendPost		*.lzma call gzip#write("lzma -z")
+autocmd FileAppendPost		*.xz call gzip#write("xz -z")
