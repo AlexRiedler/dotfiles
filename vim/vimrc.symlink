@@ -37,6 +37,8 @@ Plugin 'ngmy/vim-rubocop'
 " Plugin 'IN3D/vim-raml'
 Plugin 'pearofducks/ansible-vim'
 Plugin 'vim-airline/vim-airline' " Status line
+Plugin 'mattn/emmet-vim'
+Plugin 'posva/vim-vue'
 
 " Color Schemes
 Plugin 'tomasr/molokai'
@@ -58,6 +60,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'benmills/vimux'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'airblade/vim-rooter'
 
 " Language Specific
 Plugin 'skalnik/vim-vroom'
@@ -77,6 +80,10 @@ let g:vroom_use_vimux=1
 
 " ctrlp setup
 let g:ctrlp_clear_cache_on_exit = 0 "disable clearing cache on exit
+
+" syntastic setup
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 " Command-T setup
 "let g:CommandTMaxCachedDirectories=10 " increase cache to 10 directories as roots
@@ -166,6 +173,8 @@ nnoremap <space> za
 
 " FZF! fast search
 nnoremap <silent> <C-p> :FZF<CR>
+" Make FZF use FD for file search
+let $FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git'
 
 "
 " Auto scripts
