@@ -35,7 +35,7 @@ Plugin 'bogado/file-line'
 Plugin 'ngmy/vim-rubocop'
 " Plugin 'fatih/vim-nginx'
 " Plugin 'IN3D/vim-raml'
-Plugin 'pearofducks/ansible-vim'
+"Plugin 'pearofducks/ansible-vim'
 Plugin 'vim-airline/vim-airline' " Status line
 Plugin 'mattn/emmet-vim'
 Plugin 'posva/vim-vue'
@@ -44,20 +44,21 @@ Plugin 'posva/vim-vue'
 Plugin 'tomasr/molokai'
 Plugin 'fmoralesc/molokayo'
 Plugin 'morhetz/gruvbox'
-
-" Interface
 Plugin 'gilgigilgil/anderson.vim'
 Plugin 'altercation/vim-colors-solarized'
+
+" Interface
 Plugin 'myusuf3/numbers.vim' " relative numbers
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'shougo/neocomplcache' " auto-complete plugin
 "Plugin 'majutsushi/tagbar' " exuberant tags, etc
-Plugin 'scrooloose/syntastic' " syntax checker
+"Plugin 'scrooloose/syntastic' " syntax checker
 "Plugin 'kien/ctrlp.vim' using FZF instead
 "Plugin 'wincent/command-t'
 "Plugin 'scrooloose/nerdcommenter'
+Plugin 'neomake/neomake'
 Plugin 'scrooloose/nerdtree'
-Plugin 'benmills/vimux'
+"Plugin 'benmills/vimux'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'airblade/vim-rooter'

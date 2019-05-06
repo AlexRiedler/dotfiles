@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# ZSH Performance (Part 1/2)
+# zmodload zsh/zprof
+
 # Exports
 export DOTFILES="$HOME/dotfiles"
 export PATH=$HOME/bin:$PATH # default custom path for executables
@@ -7,8 +10,6 @@ export PATH=$HOME/bin:$PATH # default custom path for executables
 #
 # Plugin Setup
 #
-
-export SPACESHIP_CHAR_SYMBOL="> "
 
 #
 # Antibody Plugin Manager
@@ -33,6 +34,7 @@ alias ls="exa --group-directories-first"
 alias la="exa -la --group-directories-first"
 alias gst='git status'
 alias gco='git checkout'
+alias gb='git branch'
 alias vi=nvim
 alias vim=nvim
 
@@ -171,6 +173,20 @@ export PATH=node_modules/.bin:${PATH} # node.js modules
 # Upgrade Limits
 ulimit -n 8192
 
+# Dir Env Support
+if [[ -x "$(which direnv 2>/dev/null)" ]]; then
+  eval "$(direnv hook zsh)"
+fi
+
+# Tag Search Tool
+if (( $+commands[tag] )); then
+  export TAG_SEARCH_PROG=rg
+  export TAG_ALIAS_PREFIX=zz
+
+  tag() { command tag "$@"; source ${TAG_ALIAS_FILE:-/tmp/tag_aliases} 2>/dev/null }
+  alias z=tag
+fi
+
 #
 # MAC OS X SPECIFIC
 #
@@ -188,6 +204,12 @@ fi
 # System SPECIFIC
 # 
 
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 [ -f ~/.localrc ] && . ~/.localrc
+
+# ZSH Performance (Part 2/2)
+# zprof

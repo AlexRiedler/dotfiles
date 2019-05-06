@@ -23,6 +23,8 @@ brew install tree
 brew install fswatch
 brew install coreutils
 brew install exa # better ls
+brew install htop
+brew install direnv
 
 echo " › Installing Editor and Friends"
 brew install vim neovim # editor

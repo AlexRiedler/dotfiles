@@ -4,3 +4,4 @@ test -L ~/.ssh/config || {
 	ln -s "$DOTFILES"/ssh/config ~/.ssh/config
 }
 test -f ~/.ssh/config.local || touch ~/.ssh/config.local
+mkdir -p ~/.ssh/sockets
